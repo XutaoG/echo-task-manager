@@ -1,29 +1,22 @@
-import { useDispatch, useSelector } from "react-redux";
-import { removeTask } from "../store";
+import { useSelector } from "react-redux";
+import Task from "./Task";
 
 function TaskList()
 {
-	const dispatch = useDispatch();
-
 	const tasks = useSelector(state => state.tasks);
-
-	const onRemoveTask = (id) =>
-	{
-		dispatch(removeTask(id));
-	};
 
 	const renderedTasks = tasks.map((task) =>
 	{
 		return (
-			<div key={ task.id }>
-				{ task.name } | { task.description }
-				<button onClick={ () => onRemoveTask(task.id) }>Remove</button>
-			</div>
-		)
+			<Task key={ task.id } task={ task } />
+		);
 	});
 
 	return (
-		<div>
+		<div className="bg-white rounded-xl p-4 mx-12 mt-12">
+			<p className="text-3xl">
+				Tasks
+			</p>
 			{ renderedTasks }
 		</div>
 	);

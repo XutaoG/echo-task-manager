@@ -1,14 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { tasksReducer, addTask, removeTask } from "./slices/tasksSlice";
-import { formReducer, changeNameInput, changeDescriptionInput } from "./slices/formSlice";
+import { selectedTaskReducer, changeTask } from "./slices/selectedTaskSlice";
+import { categoriesReducer, addCategory, removeCategory } from "./slices/categoriesSlice";
 
 const store = configureStore({
 	reducer: {
-		form: formReducer,
-		tasks: tasksReducer
+		tasks: tasksReducer,
+		selectedTask: selectedTaskReducer,
+		categories: categoriesReducer
 	}
 });
 
 export default store;
-export { changeNameInput, changeDescriptionInput };
 export { addTask, removeTask };
+export { changeTask };
+export { addCategory, removeCategory };
