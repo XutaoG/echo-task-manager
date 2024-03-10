@@ -1,9 +1,11 @@
-import Button from "./Button";
 import { useDispatch } from "react-redux";
 import { removeTask } from "../store";
 import { changeTask } from "../store";
-import { FaRegTrashCan, FaPen, FaEye } from "react-icons/fa6";
+import { FaCircleCheck } from "react-icons/fa6";
+import { FaCircleStop } from "react-icons/fa6";
+import { FaCircleXmark } from "react-icons/fa6";
 import { useState } from "react";
+import "../styles/task.css";
 
 function Task({ task })
 {
@@ -50,45 +52,27 @@ function Task({ task })
 	) : undefined;
 
 	return (
-		<div className="bg-gray-400 rounded-xl mt-4">
-			<div
-				className="h-20 bg-gray-200 rounded-xl p-4 flex justify-between items-center"
-				onClick={ handleExpand }
-			>
-				<div className="ml-1.5">
-					<p className="text-2xl font-medium truncate w-40">
-						{ task.name }
-					</p>
-				</div>
-				<div>
-
-					<Button
-						secondary
-						className="rounded-l-lg hover:bg-green-500 w-12 h-12"
-						onClick={ handleViewClick }
-					>
-						<FaEye className="m-auto" />
-					</Button>
-
-					<Button
-						secondary
-						className="border-x-2 border-gray-900 hover:bg-stone-400 w-12 h-12"
-						onClick={ handleEditClick }
-					>
-						<FaPen className="m-auto" />
-					</Button>
-
-					<Button
-						secondary
-						className="rounded-r-lg hover:bg-red-600 w-12 h-12"
-						onClick={ handleRemoveTask }
-					>
-						<FaRegTrashCan className="m-auto" />
-					</Button>
-
-				</div>
+		<div className="task">
+			<div className="task-completion">
+				<FaCircleCheck />
 			</div>
-			{ expandedContent }
+			<div className="task-name">
+				Task 1
+			</div>
+			<div className="task-categories">
+				School, Financial
+			</div>
+			<div className="task-due-date">
+				In 4 days (4/29/24)
+			</div>
+			<div className="task-priority">
+				High priority
+			</div>
+			<div className="task-actions">
+				<button>Completed</button>
+				<button>Edit</button>
+				<button>Delete</button>
+			</div>
 		</div>
 	)
 }

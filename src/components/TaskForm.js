@@ -4,16 +4,14 @@ import { addTask } from "../store/index";
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 import CategorySelection from "./CategorySelection";
+import "../styles/task-form.css";
 
 function TaskForm()
 {
 	const dispatch = useDispatch();
 
-	const categories = useSelector(state => state.categories);
-
-	const [nameInput, setNameInput] = useState(""); // string
-	const [descriptionInput, setDescriptionInput] = useState(""); // string
-	const [categoriesInput, setCategoriesInput] = useState([]); // list of category objects
+	const [nameInput, setNameInput] = useState("");
+	const [descriptionInput, setDescriptionInput] = useState("");
 
 	const handleNameInputChange = (event) =>
 	{
@@ -25,21 +23,6 @@ function TaskForm()
 		setDescriptionInput(event.target.value);
 	};
 
-	const handleAddCategory = (toBeAddedCategory) =>
-	{
-		setCategoriesInput([...categoriesInput, toBeAddedCategory]);
-	};
-
-	const handleRemoveCategory = (toBeRemovedCategory) =>
-	{
-		const updatedCategories = categoriesInput.filter(category =>
-		{
-			return category.id !== toBeRemovedCategory.id;
-		});
-
-		setCategoriesInput(updatedCategories);
-	};
-
 	const handleSubmit = (event) =>
 	{
 		event.preventDefault();
@@ -47,56 +30,28 @@ function TaskForm()
 		const task = {
 			id: nanoid(),
 			name: nameInput,
-			description: descriptionInput,
-			categories: categoriesInput
+			description: descriptionInput
 		};
 
 		dispatch(addTask(task));
 	};
 
-	const renderedCategories = categories.map(category =>
-	{
-		return (
-			<div key={ category.id } className="ml-3">
-				<CategorySelection
-					label={ category.name }
-					onAddCategory={ () => handleAddCategory(category) }
-					onRemoveCategory={ () => handleRemoveCategory(category) } />
-			</div>
-		)
-	});
-
 	return (
-		<div className="bg-white rounded-xl p-4 mx-12">
-			<p className="text-3xl mb-3">
-				Add Task
-			</p>
-			<form onSubmit={ handleSubmit }>
-				<p className="text-lg font-medium mb-1.5">
-					Task Name
-				</p>
-				<input
-					className="border-2 border-gray-400 w-full rounded-full pl-4 py-1.5 mb-3"
-					onChange={ handleNameInputChange }
-					value={ nameInput } />
-
-				<p className="text-lg font-medium mb-1.5">
-					Description
-				</p>
-				<input
-					className="border-2 border-gray-400 w-full rounded-full pl-4 py-1.5 mb-3"
-					onChange={ handleDescriptionInputchange }
-					value={ descriptionInput } />
-
-				<p className="text-lg font-medium mb-1.5">
-					Category
-				</p>
-				<div className="mb-3 flex">
-					{ renderedCategories }
-				</div>
-
-				<div>
-					<Button primary className="w-24 rounded-lg">Add</Button>
+		<div className="task-form">
+			<div className="task-form-header">Add Task</div>
+			<form onSubmit={ handleSubmit } className="task-form-inputs">
+				<p>Task Name:</p>
+				<input value={ nameInput } onChange={ handleNameInputChange } />
+				<p>Description:</p>
+				<input value={ descriptionInput } onChange={ handleDescriptionInputchange } />
+				<p>Priority:</p>
+				<input />
+				<p>Due Date:</p>
+				<input />
+				<p>Category:</p>
+				<input />
+				<div className="task-button-wrapper">
+					<button className="task-add-button">Add Task</button>
 				</div>
 			</form>
 		</div>

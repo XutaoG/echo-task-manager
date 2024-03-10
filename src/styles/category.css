@@ -1,0 +1,46 @@
+.category
+{
+	height: 35px;
+	padding-left: 10px;
+	padding-right: 10px;
+	border-width: 0px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.red-category
+{
+	background-color: #FF9F87;
+}
+
+.green-category
+{
+	background-color: #94DA6B;
+}
+
+.blue-category
+{
+	background-color: #618CFF;
+}
+
+.orange-category
+{
+	background-color: #FFC687;
+}
+
+.purple-category
+{
+	background-color: #AE64BC;
+}
+
+.yellow-category
+{
+	background-color: #FCFA76;
+}
+
+.gray-category
+{
+	background-color: #858585;
+}

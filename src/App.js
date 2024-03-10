@@ -1,19 +1,27 @@
 import TaskForm from "./components/TaskForm";
-import TaskList from "./components/TaskList";
-import TaskDisplay from "./components/TaskDisplay";
 import CategoryForm from "./components/CategoryForm";
-import CategoryList from "./components/CategoryList";
+import Search from "./components/Search";
+import { FaClipboardList } from "react-icons/fa6";
+import TaskList from "./components/TaskList";
+
 
 function App()
 {
 	return (
-		<div className="bg-green-100 min-h-screen flex justify-center">
-			<div className="w-1/2">
-				<TaskForm />
-				<CategoryForm />
-				<CategoryList />
+		<div>
+			<div className="left-container">
+				<div className="title-header">
+					<FaClipboardList />
+					To-do List
+				</div>
+				<div className="form-wrapper">
+					<TaskForm />
+					<CategoryForm />
+				</div>
+			</div>
+			<div className="right-container">
+				<Search />
 				<TaskList />
-				<TaskDisplay />
 			</div>
 		</div>
 	);

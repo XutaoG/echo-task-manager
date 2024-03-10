@@ -1,3 +1,48 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+*
+{
+	margin: 0px;
+	padding: 0px;
+	font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+body
+{
+	margin: 0px;
+}
+
+.left-container
+{
+	width: 20%;
+	height: 100vh;
+	float: left;
+	background-color: white;
+}
+
+.right-container
+{
+	width: 80%;
+	height: 100vh;
+	float: right;
+	background-color: #DCDCDC;
+}
+
+.title-header
+{
+	height: 5%;
+	text-align: center;
+	font-size: 30px;
+	font-weight: 300;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+	background-color: #F3F3F3;
+}
+
+.form-wrapper
+{
+	height: 95%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}

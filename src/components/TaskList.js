@@ -1,6 +1,11 @@
 import { useSelector } from "react-redux";
 import Task from "./Task";
 
+
+
+import "../styles/task-list.css";
+import Divider from "./Divider";
+
 function TaskList()
 {
 	const tasks = useSelector(state => state.tasks);
@@ -13,11 +18,22 @@ function TaskList()
 	});
 
 	return (
-		<div className="bg-white rounded-xl p-4 mx-12 mt-12">
-			<p className="text-3xl">
-				Tasks
-			</p>
-			{ renderedTasks }
+		<div className="background-container">
+			<div className="list-container">
+				<div className="all-task-header">All Tasks</div>
+					<Task />
+					<Divider />
+					<Task />
+					<Divider />
+					<Task />
+					<Divider />
+					<Task />
+					<Divider />
+					<Task />
+					<Divider />
+					<Task />
+					<Divider />
+			</div>
 		</div>
 	);
 }
