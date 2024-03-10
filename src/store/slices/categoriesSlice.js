@@ -12,9 +12,12 @@ const categoriesSlice = createSlice({
 		removeCategory: (state, action) =>
 		{
 			// payload will contain id of the category to be removed
-			const index = state.indexOf(category => category.id === action.payload);
+			const updatedCategories = state.filter(category =>
+			{
+				return category.id !== action.payload;
+			})
 
-			state.splice(index, 1);
+			return updatedCategories;
 		}
 	}
 });

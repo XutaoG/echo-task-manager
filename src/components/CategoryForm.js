@@ -106,15 +106,10 @@ function CategoryForm()
 	const renderedCategories = categories.map((category) =>
 	{
 		return (
-			<div key={ category.id } className="category-display-wrapper">
-				<div
-					className="category-remove-wrapper"
-					onClick={ () => handleRemoveCategory(category.id) }
-				>
-					<FaCircleXmark />
-				</div>
-				<Category name={ category.name } color={ category.color } />
-			</div>
+			<CategoryWidget
+				key={ category.id }
+				category={ category }
+				onRemove={ handleRemoveCategory } />
 		);
 	});
 
@@ -149,6 +144,41 @@ function CategoryForm()
 					<FaCirclePlus />
 				</div>
 			</div>
+		</div>
+	);
+}
+
+function CategoryWidget({ category, onRemove })
+{
+	const [showRemoveIcon, setShowRemoveIcon] = useState(false);
+
+	const handleMouseEnter = () =>
+	{
+		setShowRemoveIcon(true);
+	}
+
+	const handleMouseLeave = () =>
+	{
+		setShowRemoveIcon(false);
+	}
+
+	const renderedRemoveIcon = showRemoveIcon ? (
+		<div
+			className="category-remove-wrapper"
+			onClick={ () => onRemove(category.id) }
+		>
+			<FaCircleXmark />
+		</div>
+	) : undefined;
+
+	return (
+		<div
+			className="category-display-wrapper"
+			onMouseEnter={ handleMouseEnter }
+			onMouseLeave={ handleMouseLeave }
+		>
+			{ renderedRemoveIcon }
+			<Category name={ category.name } color={ category.color } />
 		</div>
 	);
 }

@@ -4,7 +4,6 @@ import Search from "./components/Search";
 import { FaClipboardList } from "react-icons/fa6";
 import TaskList from "./components/TaskList";
 
-
 function App()
 {
 	return (
