@@ -20,9 +20,10 @@
 
 .task-form-inputs input
 {
-	width: calc(100% - 15px);
+	width: calc(100% - 30px);
 	height: 35px;
 	padding-left: 15px;
+	padding-right: 15px;
 	border-width: 0px;
 	background-color: #DCDCDC;
 	border-radius: 25px;
@@ -41,6 +42,11 @@
 {
 	width: calc(100% - 30px);
 	padding-right: 15px;
+}
+
+.task-form-inputs input[type=date]:hover
+{
+	cursor: pointer;
 }
 
 .task-form-inputs select
@@ -79,6 +85,7 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 	text-align: center;
+	font-size: 16px;
 }
 
 .task-add-button:hover
@@ -90,12 +97,13 @@
 .task-form-category-list
 {
 	width: calc(100% - 15px);
+	min-height: 5px;
 	padding-left: 15px;
 	padding-top: 15px;
 	padding-bottom: 15px;
 	border-width: 0px;
 	background-color: #DCDCDC;
-	border-radius: 25px;
+	border-radius: 10px;
 	margin-bottom: 20px;
 	display: flex;
 	justify-content: left;
@@ -120,4 +128,5 @@
 .task-force-category-icon:hover
 {
 	font-size: 20px;
+	cursor: pointer;
 }

@@ -20,51 +20,54 @@
 
 .task-name
 {
-	width: 12%;
+	width: 15%;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .task-categories
 {
-	width: 25%;
+	width: 20%;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	font-size: 20px;
+	align-items: center;
+	gap: 10px;
+	font-size: 16px;
 }
 
 .task-due-date
 {
-	width: 15%;
+	width: 20%;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .task-priority
 {
-	width: 15%;
+	width: 8%;
 	height: 50px;
 	display: flex;
 	align-items: center;
 	justify-content: left;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .task-actions
 {
-	width: 25%;
+	width: 30%;
 	height: 50px;
+	padding-right: 20px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: right;
 	gap: 10px;
 }
 
@@ -79,7 +82,7 @@
 	margin-top: 20px;
 	margin-bottom: 20px;
 	text-align: center;
-	font-size: 20px;
+	font-size: 16px;
 }
 
 .divider
@@ -88,4 +91,37 @@
 	margin-right: 50px;
 	border: 0;
 	border-top: 1px solid #E4E4E4;
+}
+
+.task-complete-button:hover
+{
+	cursor: pointer;
+	background-color: #98F783;
+}
+
+.task-edit-button:hover
+{
+	cursor: pointer;
+	background-color: #A3A3A3;
+}
+
+.task-delete-button:hover
+{
+	cursor: pointer;
+	background-color: #FA707F;
+}
+
+.font-past-due
+{
+	color: #FA707F;
+}
+
+.font-due-soon
+{
+	color: #FFC687;
+}
+
+.font-due-in-days
+{
+	color: #94DA6B;
 }

@@ -2,7 +2,12 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const categoriesSlice = createSlice({
 	name: "categories",
-	initialState: [],
+	initialState: [
+		{ id: "temp1", name: "School", color: "orange" },
+		{ id: "temp2", name: "Financial", color: "green" },
+		{ id: "temp3", name: "Life", color: "blue" },
+		{ id: "temp4", name: "Diet", color: "purple" }
+	],
 	reducers: {
 		addCategory: (state, action) =>
 		{

@@ -54,21 +54,19 @@ function CategoryForm()
 	// Adds new category
 	const handleAddCategory = () =>
 	{
-		// Tracks if 1 or more warning is generated
-		let hasWarning = false;
+		// Tracks the warning generated upon submit
+		let generatedWarnings = [];
 
 		// Check if name is empty
 		if (nameInput.trim() === "")
 		{
-			setWarnings([...warnings, "emptyName"]);
-			hasWarning = true;
+			generatedWarnings.push("emptyName");
 		}
 
 		// Check if name is at max length
 		if (nameInput.trim().length > 20)
 		{
-			setWarnings([...warnings, "maxLength"]);
-			hasWarning = true;
+			generatedWarnings.push("maxLength");
 		}
 
 		// Check if duplicate name exists
@@ -76,13 +74,14 @@ function CategoryForm()
 		{
 			if (category.name === nameInput.trim())
 			{
-				setWarnings([...warnings, "duplicateName"]);
-				hasWarning = true;
+				generatedWarnings.push("duplicateName");
 				break;
 			}
 		}
 
-		if (hasWarning)
+		setWarnings([...generatedWarnings]);
+
+		if (generatedWarnings.length > 0)
 		{
 			return;
 		}

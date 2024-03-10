@@ -99,4 +99,5 @@
 .category-remove-wrapper:hover
 {
 	font-size: 20px;
+	cursor: pointer;
 }

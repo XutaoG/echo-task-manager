@@ -1,10 +1,6 @@
 import { useSelector } from "react-redux";
 import Task from "./Task";
-
-
-
 import "../styles/task-list.css";
-import Divider from "./Divider";
 
 function TaskList()
 {
@@ -21,18 +17,7 @@ function TaskList()
 		<div className="background-container">
 			<div className="list-container">
 				<div className="all-task-header">All Tasks</div>
-					<Task />
-					<Divider />
-					<Task />
-					<Divider />
-					<Task />
-					<Divider />
-					<Task />
-					<Divider />
-					<Task />
-					<Divider />
-					<Task />
-					<Divider />
+				{ renderedTasks }
 			</div>
 		</div>
 	);

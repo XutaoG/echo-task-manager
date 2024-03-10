@@ -11,7 +11,7 @@ function App()
 			<div className="left-container">
 				<div className="title-header">
 					<FaClipboardList />
-					To-do List
+					Echo
 				</div>
 				<div className="form-wrapper">
 					<TaskForm />
