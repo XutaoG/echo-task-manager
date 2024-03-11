@@ -1,7 +1,9 @@
 .form-warning
 {
-	width: 100%;
+	width: fit-content;
 	height: 35px;
+	padding-left: 15px;
+	padding-right: 15px;
 	margin-bottom: 10px;
 	border: 0;
 	border-radius: 10px;

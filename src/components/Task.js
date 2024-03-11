@@ -132,7 +132,25 @@ function Task({ task })
 
 	const renderedCategories = task.categories.map(categoryId =>
 	{
+		// Check if category exists
 		const foundCategory = categories.find(tempCategory => tempCategory.id === categoryId);
+
+		if (!foundCategory)
+		{
+			// const updatedCategories = task.categories.filter(tempCategoryId =>
+			// {
+			// 	return tempCategoryId !== categoryId;
+			// });
+
+			// const updatedTask = {
+			// 	...task,
+			// 	categories: updatedCategories
+			// }
+
+			// dispatch(updateTask(updatedTask));
+
+			return undefined;
+		}
 
 		return (
 			<Category
@@ -142,7 +160,7 @@ function Task({ task })
 		);
 	});
 
-	const renderedTaskView = isExpanded ? <TaskView /> : undefined;
+	const renderedTaskView = isExpanded ? <TaskView task={ task } /> : undefined;
 
 	const completionMessage = task.completed ? "Unmark As Complete" : "Mark As Complete";
 
@@ -175,7 +193,7 @@ function Task({ task })
 						className="task-view-button"
 						onClick={ handleViewClick }
 					>
-						Edit
+						View
 					</button>
 					<button
 						className="task-delete-button"

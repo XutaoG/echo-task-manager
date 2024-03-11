@@ -10,7 +10,7 @@ const tasksSlice = createSlice({
 			priority: "high",
 			dueDate: "2024-04-17",
 			categories: [
-				"temp1", "temp2"
+				"school", "financial"
 			],
 			completed: true
 		},
@@ -21,7 +21,7 @@ const tasksSlice = createSlice({
 			priority: "medium",
 			dueDate: "2024-03-09",
 			categories: [
-				"temp1", "temp3"
+				"school", "life"
 			],
 			completed: false
 		},
@@ -32,7 +32,7 @@ const tasksSlice = createSlice({
 			priority: "none",
 			dueDate: "2024-06-12",
 			categories: [
-				"temp2"
+				"diet"
 			],
 			completed: false
 		},
@@ -60,10 +60,24 @@ const tasksSlice = createSlice({
 			{
 				if (task.id === action.payload)
 				{
-					return {...task, completed: !task.completed};
+					return { ...task, completed: !task.completed };
 				}
 				return task;
 			})
+
+			return updatedTasks;
+		},
+		updateTask: (state, action) =>
+		{
+			// payload contains a new task object
+			const updatedTasks = state.map(task =>
+			{
+				if (task.id === action.payload.id)
+				{
+					return action.payload;
+				}
+				return task;
+			});
 
 			return updatedTasks;
 		}
@@ -71,4 +85,4 @@ const tasksSlice = createSlice({
 })
 
 export const tasksReducer = tasksSlice.reducer;
-export const { addTask, removeTask, markCompletion } = tasksSlice.actions;
+export const { addTask, removeTask, markCompletion, updateTask } = tasksSlice.actions;

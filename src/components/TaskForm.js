@@ -2,9 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTask } from "../store/index";
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
-import { FaCirclePlus, FaCircleCheck } from "react-icons/fa6";
-import Category from "./Category";
 import Warning from "./Warning";
+import CategoryWidget from "./CategoryWidget";
 import "../styles/task-form.css";
 
 function TaskForm()
@@ -66,7 +65,7 @@ function TaskForm()
 		setWarnings([]);
 
 		setCategoriesInput([...categoriesInput, categoryId]);
-	}
+	};
 
 	const handleRemoveCategory = (categoryId) =>
 	{
@@ -78,7 +77,7 @@ function TaskForm()
 		});
 
 		setCategoriesInput(updatedCategoriesInput);
-	}
+	};
 
 	const handleSubmit = (event) =>
 	{
@@ -98,7 +97,7 @@ function TaskForm()
 		{
 			generatedWarnings.push("maxNameLength");
 		}
-		
+
 		// Check if description is at max length
 		if (descriptionInput.trim().length > 200)
 		{
@@ -111,8 +110,21 @@ function TaskForm()
 			generatedWarnings.push("pastDueDate");
 		}
 
+		// Check if all categories are valid
+		const updatedCategoriesInput = categoriesInput.filter(categoryId =>
+		{
+			for (let category of categories)
+			{
+				if (category.id === categoryId)
+				{
+					return true;
+				}
+			}
+			return false;
+		});
+
 		// Check if task has more than 3 categories
-		if (categoriesInput.length > 3)
+		if (updatedCategoriesInput.length > 3)
 		{
 			generatedWarnings.push("maxCategoryLength");
 		}
@@ -124,18 +136,6 @@ function TaskForm()
 			return;
 		}
 
-		// Check if all categories are valid
-		categoriesInput.filter(categoryId =>
-		{
-			for (let category of categories)
-			{
-				if (category.id === categoryId)
-				{
-					return true;
-				}
-			}
-			return false;
-		})
 
 		const task = {
 			id: nanoid(),
@@ -143,19 +143,39 @@ function TaskForm()
 			description: descriptionInput.trim(),
 			priority: priorityInput,
 			dueDate: dueDateInput,
-			categories: categoriesInput,
+			categories: updatedCategoriesInput,
 			completed: false
 		};
 
 		dispatch(addTask(task));
+
+		// Reset input fields
+		setNameInput("");
+		setDescriptionInput("");
+		setPriorityInput("none");
+		setDueDateInput(new Date().toISOString().slice(0, 10));
+		setCategoriesInput([]);
 	};
 
 	const renderedCategories = categories.map((category) =>
 	{
+		console.log(categoriesInput);
+
+		let hasAdded = false;
+
+		for (let categoryId of categoriesInput)
+		{
+			if (categoryId === category.id)
+			{
+				hasAdded = true;
+			}
+		}
+
 		return (
 			<CategoryWidget
 				key={ category.id }
 				category={ category }
+				initialState={ hasAdded }
 				onAdd={ handleAddCategory }
 				onRemove={ handleRemoveCategory } />
 		);
@@ -171,7 +191,9 @@ function TaskForm()
 	return (
 		<div className="task-form">
 			<div className="task-form-header">Add Task</div>
-			{ renderedWarnings }
+			<div className="task-form-warning-container">
+				{ renderedWarnings }
+			</div>
 			<form onSubmit={ handleSubmit } className="task-form-inputs">
 				<p>Task Name:</p>
 				<input value={ nameInput } onChange={ handleNameInputChange } />
@@ -200,40 +222,6 @@ function TaskForm()
 	);
 }
 
-function CategoryWidget({ category, onAdd, onRemove })
-{
-	const [hasAdded, setHasAdded] = useState(false);
 
-	const renderedIcon = hasAdded ? <FaCircleCheck /> : <FaCirclePlus />
-
-	const handleClick = () =>
-	{
-		// If hasAdded is true, remove category
-		if (hasAdded)
-		{
-			onRemove(category.id);
-		}
-		else
-		{
-			onAdd(category.id);
-		}
-
-		setHasAdded(value => !value);
-	};
-
-	return (
-		<div
-			className="task-form-category-display-wrapper"
-		>
-			<div
-				className="task-force-category-icon"
-				onClick={ handleClick }
-			>
-				{ renderedIcon }
-			</div>
-			<Category name={ category.name } color={ category.color } />
-		</div>
-	);
-}
 
 export default TaskForm;

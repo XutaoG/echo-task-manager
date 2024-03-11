@@ -15,8 +15,7 @@
 {
 	width: 100%;
 	display: flex;
-	justify-content: left;
-	align-items: left;
+	justify-content: space-between;
 	gap: 15px;
 }
 
@@ -77,7 +76,7 @@
 
 .task-view-inputs select
 {
-	width: calc(100% - 15px);
+	width: calc(100%);
 	height: 35px;
 	padding-left: 15px;
 	border-width: 0px;
@@ -127,10 +126,10 @@
 {
 	display: flex;
 	justify-content: right;
-	align-items: center;
+	align-items: flex-end;
 }
 
-.task-view-add-button
+.task-view-update-button
 {
 	height: 35px;
 	border: 0px;
@@ -138,7 +137,23 @@
 	background-color: #DCDCDC;
 	padding-left: 20px;
 	padding-right: 20px;
-	margin-bottom: 20px;
+	margin-bottom: 10px;
 	text-align: center;
 	font-size: 16px;
+}
+
+.task-view-update-button:hover
+{
+	background-color: #A3A3A3;
+	cursor: pointer;
+}
+
+.task-view-warning-container
+{
+	padding-bottom: 10px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
+	gap: 0px 15px;
+	flex-wrap: wrap;
 }
