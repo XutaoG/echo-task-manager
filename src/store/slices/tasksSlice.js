@@ -12,7 +12,7 @@ const tasksSlice = createSlice({
 			categories: [
 				"school", "financial"
 			],
-			completed: true
+			completed: false
 		},
 		{
 			id: "temp2",
