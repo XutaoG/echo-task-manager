@@ -1,10 +1,23 @@
 import { useSelector } from "react-redux";
+import { createSelector } from "@reduxjs/toolkit";
 import Task from "./Task";
 import "../styles/task-list.css";
 
 function TaskList()
 {
-	const tasks = useSelector(state => state.tasks);
+	const memoizedTasks = createSelector(
+		state => state.tasks,
+		state => state.search,
+		(tasks, searchTerm) =>
+		{
+			return tasks.filter(task =>
+			{
+				return task.name.toLowerCase().includes(searchTerm.toLowerCase().trim());				
+			});
+		}
+	);
+
+	const tasks = useSelector(memoizedTasks);
 
 	const renderedTasks = tasks.map((task) =>
 	{

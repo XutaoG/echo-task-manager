@@ -180,9 +180,9 @@ function TaskForm()
 				<p>Priority:</p>
 				<select value={ priorityInput } onChange={ handlePriorityInputChange }>
 					<option value="none">None</option>
-					<option value="low">Low Priority</option>
-					<option value="medium">Medium Priority</option>
-					<option value="High">High Priority</option>
+					<option value="low">Low</option>
+					<option value="medium">Medium</option>
+					<option value="high">High</option>
 				</select>
 				<p>Due Date:</p>
 				<input type="date" value={ dueDateInput } onChange={ handleDueDateInputChange } onKeyDown={ e => e.preventDefault() } />

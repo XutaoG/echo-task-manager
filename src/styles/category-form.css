@@ -4,11 +4,6 @@
 	margin-right: 30px;
 }
 
-/* .category-form p
-{
-	margin-bottom: 10px;
-} */
-
 .category-list
 {
 	display: flex;
@@ -29,7 +24,7 @@
 
 .category-input input
 {
-	width: calc(65% - 30px);
+	width: calc(60% - 30px);
 	height: 35px;
 	padding-left: 15px;
 	padding-right: 15px;
@@ -41,7 +36,7 @@
 
 .category-input select
 {
-	width: calc(25% - 15px);
+	width: calc(30% - 15px);
 	height: 35px;
 	padding-left: 15px;
 	border-width: 0px;

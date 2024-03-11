@@ -1,8 +1,8 @@
 import TaskForm from "./components/TaskForm";
 import CategoryForm from "./components/CategoryForm";
 import Search from "./components/Search";
-import { FaClipboardList } from "react-icons/fa6";
 import TaskList from "./components/TaskList";
+import logo from "./asset/logo/logo.png";
 
 function App()
 {
@@ -10,8 +10,7 @@ function App()
 		<div>
 			<div className="left-container">
 				<div className="title-header">
-					<FaClipboardList />
-					Echo
+					<img className="logo" src={ logo } alt="logo" />
 				</div>
 				<div className="form-wrapper">
 					<TaskForm />

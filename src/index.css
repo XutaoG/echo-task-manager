@@ -39,6 +39,12 @@ body
 	background-color: #F3F3F3;
 }
 
+.logo
+{
+	height: 100%;
+	/* width: 40%; */
+}
+
 .form-wrapper
 {
 	height: 95%;

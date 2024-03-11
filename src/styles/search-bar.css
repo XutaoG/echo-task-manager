@@ -17,17 +17,41 @@
 .search-input
 {
 	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 15px;
 }
 
 .search-input input
 {
-	width: calc(100% - 15px);
+	width: calc(70% - 15px);
 	background-color: #E3E3E3;
 	height: 35px;
 	border-width: 0px;
 	border-radius: 25px;
 	padding-left: 15px;
 	font-size: 18px;
+}
+
+.search-input button
+{
+	background-color: #DCDCDC;
+	height: 35px;
+	border: 0px;
+	border-width: 0px;
+	border-radius: 25px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 18px;
+	text-align: center;
+	font-size: 16px;
+}
+
+.search-input button:hover
+{
+	background-color: #A3A3A3;
+	cursor: pointer;
 }
 
 .credit

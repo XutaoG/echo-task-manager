@@ -1,0 +1,144 @@
+.task-view-container
+{
+	width: calc(100% - 80px);
+	background-color: #f3f3f3;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-top: 20px;
+	border-radius: 25px;
+}
+
+.task-view-inputs
+{
+	width: 100%;
+	display: flex;
+	justify-content: left;
+	align-items: left;
+	gap: 15px;
+}
+
+.task-view-inputs p
+{
+	margin-bottom: 10px;
+}
+
+.task-view-inputs input
+{
+	width: calc(100% - 30px);
+	height: 35px;
+	padding-left: 15px;
+	padding-right: 15px;
+	border-width: 0px;
+	background-color: #DCDCDC;
+	border-radius: 25px;
+	margin-bottom: 20px;
+	font-size: 18px;
+}
+
+.task-view-inputs input:focus
+{
+	border-width: 0px;
+	border-color: transparent;
+	background-color: #DCDCDC;
+}
+
+.task-view-name
+{
+	width: 10%;
+	flex-grow: 1;
+}
+
+.task-view-description
+{
+	width: 30%;
+	flex-grow: 1;
+}
+
+.task-view-priority
+{
+	width: 10%;
+	flex-grow: 1;
+}
+
+.task-view-date
+{
+	width: 10%;
+	flex-grow: 1;
+}
+
+.task-view-categories
+{
+	width: 30%;
+	flex-grow: 1;
+}
+
+.task-view-inputs select
+{
+	width: calc(100% - 15px);
+	height: 35px;
+	padding-left: 15px;
+	border-width: 0px;
+	background-color: #DCDCDC;
+	border-radius: 25px;
+	margin-bottom: 20px;
+	font-size: 18px;
+	appearance: none;
+}
+
+.task-view-inputs select:hover
+{
+	cursor: pointer;
+}
+
+.task-view-inputs input[type=date]
+{
+	flex-grow: 1;
+	width: calc(100% - 30px);
+	padding-right: 15px;
+}
+
+.task-view-inputs input[type=date]:hover
+{
+	cursor: pointer;
+}
+
+.task-view-category-list
+{
+	width: calc(100% - 15px);
+	min-height: 5px;
+	padding-left: 15px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	border-width: 0px;
+	background-color: #DCDCDC;
+	border-radius: 10px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: left;
+	flex-wrap: wrap;
+	margin-bottom: 10px;
+	gap: 10px;
+}
+
+.task-view-button-wrapper
+{
+	display: flex;
+	justify-content: right;
+	align-items: center;
+}
+
+.task-view-add-button
+{
+	height: 35px;
+	border: 0px;
+	border-radius: 25px;
+	background-color: #DCDCDC;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+	font-size: 16px;
+}

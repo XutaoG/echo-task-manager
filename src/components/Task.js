@@ -1,11 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { removeTask, markCompletion } from "../store";
-import { FaCircleCheck } from "react-icons/fa6";
-import { FaCircleStop } from "react-icons/fa6";
-import { FaCircleXmark } from "react-icons/fa6";
-import { useState } from "react";
+import { FaCircleCheck, FaCircleStop } from "react-icons/fa6";
+import { changeViewedTask } from "../store";
 import Divider from "./Divider";
 import Category from "./Category";
+import TaskView from "./TaskView";
 import "../styles/task.css";
 
 function Task({ task })
@@ -14,7 +13,10 @@ function Task({ task })
 
 	const categories = useSelector(state => state.categories);
 
-	const [expanded, setExpanded] = useState(false);
+	const isExpanded = useSelector(state =>
+	{
+		return state.taskView === task.id;
+	});
 
 	const handleCompletionClick = (event) =>
 	{
@@ -23,9 +25,18 @@ function Task({ task })
 		dispatch(markCompletion(task.id));
 	};
 
-	const handleEditClick = (event) =>
+	const handleViewClick = (event) =>
 	{
+		event.stopPropagation();
 
+		if (isExpanded)
+		{
+			dispatch(changeViewedTask(null));
+		}
+		else
+		{
+			dispatch(changeViewedTask(task.id));
+		}
 	};
 
 	const handleRemoveTask = (event) =>
@@ -44,7 +55,11 @@ function Task({ task })
 		const dayLeft = Math.floor((new Date(task.dueDate).getTime() -
 			new Date(new Date().toISOString().slice(0, 10)).getTime()) / 86400000);
 
-		if (dayLeft < 0)
+		if (task.completed)
+		{
+			message = "Completed";
+		}
+		else if (dayLeft < 0)
 		{
 			message = "Past due";
 		}
@@ -61,7 +76,15 @@ function Task({ task })
 			message = `Due in ${dayLeft} days`;
 		}
 
-		if (dayLeft < 0)
+		if (task.completed)
+		{
+			return (
+				<div className="font-completed">
+					{ message }
+				</div>
+			);
+		}
+		else if (dayLeft < 0)
 		{
 			return (
 				<div className="font-past-due">
@@ -119,6 +142,8 @@ function Task({ task })
 		);
 	});
 
+	const renderedTaskView = isExpanded ? <TaskView /> : undefined;
+
 	const completionMessage = task.completed ? "Unmark As Complete" : "Mark As Complete";
 
 	return (
@@ -146,7 +171,12 @@ function Task({ task })
 					>
 						{ completionMessage }
 					</button>
-					<button className="task-edit-button">Edit</button>
+					<button
+						className="task-view-button"
+						onClick={ handleViewClick }
+					>
+						Edit
+					</button>
 					<button
 						className="task-delete-button"
 						onClick={ handleRemoveTask }
@@ -155,6 +185,7 @@ function Task({ task })
 					</button>
 				</div>
 			</div>
+			{ renderedTaskView }
 			<Divider />
 		</div>
 	)
