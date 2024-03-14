@@ -21,3 +21,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * Delete button allows the deletion of the task.
 * Search bar on top allows task to be searched based on keywords that matches task name and categories.
 * Input validations are performed to avoid errors (eg. no empty name, invalid due date...)
+
+### Example Screenshots:
+![Screenshot 2024-03-13 201943](https://github.com/XutaoG/echo-task-manager/assets/138334441/10cd2f6e-51ac-44a5-8b8a-b81fe2410ce1)
+![Screenshot 2024-03-13 202249](https://github.com/XutaoG/echo-task-manager/assets/138334441/0666f797-400b-427e-9806-6d661e95e990)
