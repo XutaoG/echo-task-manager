@@ -19,3 +19,5 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 * List of created tasks are display in the main panel which allows each tasks to be individuals viewed, edited, or deleted. General information of each task is displayed in order by due date.
 * View button allows an expanded view of the task and changes to be made.
 * Delete button allows the deletion of the task.
+* Search bar on top allows task to be searched based on keywords that matches task name and categories.
+* Input validations are performed to avoid errors (eg. no empty name, invalid due date...)
